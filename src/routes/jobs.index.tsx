@@ -7,11 +7,11 @@ import { fetchJobs } from "@/lib/queries";
 import { JOB_TYPES } from "@/lib/portal";
 
 interface JobSearch {
-  q?: string;
-  location?: string;
-  type?: string;
-  exp?: string;
-  salary?: string;
+  q?: string | undefined;
+  location?: string | undefined;
+  type?: string | undefined;
+  exp?: string | undefined;
+  salary?: string | undefined;
 }
 
 export const Route = createFileRoute("/jobs/")({

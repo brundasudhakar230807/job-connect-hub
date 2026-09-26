@@ -31,7 +31,7 @@ function ApplicationDetails() {
       const { data: row, error } = await supabase
         .from("applications")
         .select(
-          "id, status, applied_at, updated_at, cover_letter, resumes(file_name, file_path), jobs(id, title, location, job_type, salary_min, salary_max, experience_min, application_deadline, companies(name, location, website))",
+          "id, status, applied_at, updated_at, cover_letter, resumes(file_name, file_path), jobs(id, title, location, job_type, salary_min, salary_max, experience_min, deadline, companies(name, location, website))",
         )
         .eq("id", applicationId)
         .eq("job_seeker_id", user!.id)
@@ -80,7 +80,7 @@ function ApplicationDetails() {
                 <div className="row small">
                   <div className="col-6 mb-2"><span className="jp-muted d-block">Applied on</span>{formatDate(data.applied_at)}</div>
                   <div className="col-6 mb-2"><span className="jp-muted d-block">Last updated</span>{formatDate(data.updated_at)}</div>
-                  <div className="col-6"><span className="jp-muted d-block">Deadline</span>{formatDate(data.jobs?.application_deadline)}</div>
+                  <div className="col-6"><span className="jp-muted d-block">Deadline</span>{formatDate(data.jobs?.deadline)}</div>
                   <div className="col-6"><span className="jp-muted d-block">Resume sent</span>{data.resumes?.file_name ?? "None attached"}</div>
                 </div>
                 {data.jobs?.id && (
