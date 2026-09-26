@@ -107,7 +107,7 @@ function ApplicantDetails() {
                   <h2 className="h5 mb-1">{app.job_seekers?.profiles?.full_name}</h2>
                   <div className="jp-muted small">{app.job_seekers?.headline ?? "—"}</div>
                   <div className="small jp-muted">
-                    {app.job_seekers?.profiles?.email}{app.job_seekers?.profiles?.phone ? ` · ${app.profiles.phone}` : ""}
+                    {app.job_seekers?.profiles?.email}{app.job_seekers?.profiles?.phone ? ` · ${app.job_seekers.profiles.phone}` : ""}
                     {app.job_seekers?.location ? ` · 📍 ${app.job_seekers.location}` : ""}
                   </div>
                   {app.job_seekers?.linkedin_url && (

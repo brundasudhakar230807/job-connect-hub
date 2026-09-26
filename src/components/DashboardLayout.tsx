@@ -22,10 +22,7 @@ const MENUS: Record<AppRole, { to: string; label: string; icon: string }[]> = {
   ],
   admin: [
     { to: "/admin", label: "Dashboard", icon: "🏠" },
-    { to: "/admin/users", label: "Users", icon: "👤" },
-    { to: "/admin/companies", label: "Companies", icon: "🏢" },
-    { to: "/admin/jobs", label: "Jobs", icon: "🗂️" },
-    { to: "/admin/applications", label: "Applications", icon: "📋" },
+    { to: "/jobs", label: "Browse Jobs", icon: "🔎" },
   ],
 };
 

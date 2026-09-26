@@ -26,11 +26,11 @@ export const JOB_SELECT =
   "id, title, location, job_type, salary_min, salary_max, experience_min, experience_max, description, responsibilities, qualifications, openings, status, posted_date, deadline, company_id, posted_by, companies(id, name, logo_url, location, industry, description, website), job_skills(skills(id, name))";
 
 export interface JobFilters {
-  q?: string;
-  location?: string;
-  type?: string;
-  exp?: string;
-  salary?: string;
+  q?: string | undefined;
+  location?: string | undefined;
+  type?: string | undefined;
+  exp?: string | undefined;
+  salary?: string | undefined;
 }
 
 export async function fetchJobs(filters: JobFilters = {}, limit = 60): Promise<JobRow[]> {
