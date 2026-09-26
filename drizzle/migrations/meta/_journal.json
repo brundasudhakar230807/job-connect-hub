@@ -8,6 +8,13 @@
       "when": 1790426334640,
       "tag": "0000_job_portal_schema",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1790426393329,
+      "tag": "0001_resume_storage_policies",
+      "breakpoints": true
     }
   ]
 }
