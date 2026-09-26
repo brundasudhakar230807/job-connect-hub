@@ -23,6 +23,8 @@ import { Route as AuthenticatedApplicationsIndexRouteImport } from './routes/_au
 import { Route as AuthenticatedApplicationsApplicationIdRouteImport } from './routes/_authenticated/applications.$applicationId'
 import { Route as AuthenticatedProfileIndexRouteImport } from './routes/_authenticated/profile.index'
 import { Route as AuthenticatedProfileEditRouteImport } from './routes/_authenticated/profile.edit'
+import { Route as AuthenticatedRecruiterCompanyRouteImport } from './routes/_authenticated/recruiter.company'
+import { Route as AuthenticatedRecruiterDashboardRouteImport } from './routes/_authenticated/recruiter.dashboard'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -97,6 +99,18 @@ const AuthenticatedProfileEditRoute =
     path: '/profile/edit',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedRecruiterCompanyRoute =
+  AuthenticatedRecruiterCompanyRouteImport.update({
+    id: '/recruiter/company',
+    path: '/recruiter/company',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedRecruiterDashboardRoute =
+  AuthenticatedRecruiterDashboardRouteImport.update({
+    id: '/recruiter/dashboard',
+    path: '/recruiter/dashboard',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -110,6 +124,8 @@ export interface FileRoutesByFullPath {
   '/jobs/': typeof JobsIndexRoute
   '/applications/$applicationId': typeof AuthenticatedApplicationsApplicationIdRoute
   '/profile/edit': typeof AuthenticatedProfileEditRoute
+  '/recruiter/company': typeof AuthenticatedRecruiterCompanyRoute
+  '/recruiter/dashboard': typeof AuthenticatedRecruiterDashboardRoute
   '/applications/': typeof AuthenticatedApplicationsIndexRoute
   '/profile/': typeof AuthenticatedProfileIndexRoute
 }
@@ -125,6 +141,8 @@ export interface FileRoutesByTo {
   '/jobs': typeof JobsIndexRoute
   '/applications/$applicationId': typeof AuthenticatedApplicationsApplicationIdRoute
   '/profile/edit': typeof AuthenticatedProfileEditRoute
+  '/recruiter/company': typeof AuthenticatedRecruiterCompanyRoute
+  '/recruiter/dashboard': typeof AuthenticatedRecruiterDashboardRoute
   '/applications': typeof AuthenticatedApplicationsIndexRoute
   '/profile': typeof AuthenticatedProfileIndexRoute
 }
@@ -142,6 +160,8 @@ export interface FileRoutesById {
   '/jobs/': typeof JobsIndexRoute
   '/_authenticated/applications/$applicationId': typeof AuthenticatedApplicationsApplicationIdRoute
   '/_authenticated/profile/edit': typeof AuthenticatedProfileEditRoute
+  '/_authenticated/recruiter/company': typeof AuthenticatedRecruiterCompanyRoute
+  '/_authenticated/recruiter/dashboard': typeof AuthenticatedRecruiterDashboardRoute
   '/_authenticated/applications/': typeof AuthenticatedApplicationsIndexRoute
   '/_authenticated/profile/': typeof AuthenticatedProfileIndexRoute
 }
@@ -159,6 +179,8 @@ export interface FileRouteTypes {
     | '/jobs/'
     | '/applications/$applicationId'
     | '/profile/edit'
+    | '/recruiter/company'
+    | '/recruiter/dashboard'
     | '/applications/'
     | '/profile/'
   fileRoutesByTo: FileRoutesByTo
@@ -174,6 +196,8 @@ export interface FileRouteTypes {
     | '/jobs'
     | '/applications/$applicationId'
     | '/profile/edit'
+    | '/recruiter/company'
+    | '/recruiter/dashboard'
     | '/applications'
     | '/profile'
   id:
@@ -190,6 +214,8 @@ export interface FileRouteTypes {
     | '/jobs/'
     | '/_authenticated/applications/$applicationId'
     | '/_authenticated/profile/edit'
+    | '/_authenticated/recruiter/company'
+    | '/_authenticated/recruiter/dashboard'
     | '/_authenticated/applications/'
     | '/_authenticated/profile/'
   fileRoutesById: FileRoutesById
@@ -305,6 +331,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedProfileEditRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/recruiter/company': {
+      id: '/_authenticated/recruiter/company'
+      path: '/recruiter/company'
+      fullPath: '/recruiter/company'
+      preLoaderRoute: typeof AuthenticatedRecruiterCompanyRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/recruiter/dashboard': {
+      id: '/_authenticated/recruiter/dashboard'
+      path: '/recruiter/dashboard'
+      fullPath: '/recruiter/dashboard'
+      preLoaderRoute: typeof AuthenticatedRecruiterDashboardRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
@@ -313,6 +353,8 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedResumeRoute: typeof AuthenticatedResumeRoute
   AuthenticatedApplicationsApplicationIdRoute: typeof AuthenticatedApplicationsApplicationIdRoute
   AuthenticatedProfileEditRoute: typeof AuthenticatedProfileEditRoute
+  AuthenticatedRecruiterCompanyRoute: typeof AuthenticatedRecruiterCompanyRoute
+  AuthenticatedRecruiterDashboardRoute: typeof AuthenticatedRecruiterDashboardRoute
   AuthenticatedApplicationsIndexRoute: typeof AuthenticatedApplicationsIndexRoute
   AuthenticatedProfileIndexRoute: typeof AuthenticatedProfileIndexRoute
 }
@@ -323,6 +365,8 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedApplicationsApplicationIdRoute:
     AuthenticatedApplicationsApplicationIdRoute,
   AuthenticatedProfileEditRoute: AuthenticatedProfileEditRoute,
+  AuthenticatedRecruiterCompanyRoute: AuthenticatedRecruiterCompanyRoute,
+  AuthenticatedRecruiterDashboardRoute: AuthenticatedRecruiterDashboardRoute,
   AuthenticatedApplicationsIndexRoute: AuthenticatedApplicationsIndexRoute,
   AuthenticatedProfileIndexRoute: AuthenticatedProfileIndexRoute,
 }
