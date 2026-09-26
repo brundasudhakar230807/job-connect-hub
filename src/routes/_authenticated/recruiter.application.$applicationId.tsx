@@ -35,7 +35,7 @@ function ApplicantDetails() {
       const { data: app } = await supabase
         .from("applications")
         .select(
-          "id, status, applied_at, updated_at, cover_letter, recruiter_notes, job_seeker_id, jobs(id, title, location), resumes(file_name, file_path), profiles:job_seeker_id(full_name, email, phone), job_seekers:job_seeker_id(headline, bio, location, experience_years, expected_salary, linkedin_url)",
+          "id, status, applied_at, updated_at, cover_letter, recruiter_notes, job_seeker_id, jobs(id, title, location), resumes(file_name, file_path), job_seekers:job_seeker_id(headline, bio, location, experience_years, expected_salary, linkedin_url, profiles(full_name, email, phone))",
         )
         .eq("id", applicationId)
         .maybeSingle();
@@ -101,13 +101,13 @@ function ApplicantDetails() {
             <div className="col-lg-7">
               <div className="jp-card p-4 mb-4 d-flex gap-3 align-items-center flex-wrap">
                 <div className="jp-logo-square" style={{ width: 64, height: 64, fontSize: 20 }}>
-                  {initials(app.profiles?.full_name)}
+                  {initials(app.job_seekers?.profiles?.full_name)}
                 </div>
                 <div className="flex-grow-1">
-                  <h2 className="h5 mb-1">{app.profiles?.full_name}</h2>
+                  <h2 className="h5 mb-1">{app.job_seekers?.profiles?.full_name}</h2>
                   <div className="jp-muted small">{app.job_seekers?.headline ?? "—"}</div>
                   <div className="small jp-muted">
-                    {app.profiles?.email}{app.profiles?.phone ? ` · ${app.profiles.phone}` : ""}
+                    {app.job_seekers?.profiles?.email}{app.job_seekers?.profiles?.phone ? ` · ${app.profiles.phone}` : ""}
                     {app.job_seekers?.location ? ` · 📍 ${app.job_seekers.location}` : ""}
                   </div>
                   {app.job_seekers?.linkedin_url && (

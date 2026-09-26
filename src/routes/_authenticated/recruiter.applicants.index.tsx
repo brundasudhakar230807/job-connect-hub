@@ -34,7 +34,7 @@ function AllApplicants() {
       if (!ids.length) return [];
       const { data: apps } = await supabase
         .from("applications")
-        .select("id, status, applied_at, jobs(id, title), profiles:job_seeker_id(full_name, email)")
+        .select("id, status, applied_at, jobs(id, title), job_seekers:job_seeker_id(profiles(full_name, email))")
         .in("job_id", ids)
         .order("applied_at", { ascending: false });
       return apps ?? [];
@@ -71,8 +71,8 @@ function AllApplicants() {
                 <tbody>
                   {rows.map((a) => (
                     <tr key={a.id}>
-                      <td className="fw-semibold">{a.profiles?.full_name ?? "Candidate"}</td>
-                      <td className="small jp-muted">{a.profiles?.email}</td>
+                      <td className="fw-semibold">{a.job_seekers?.profiles?.full_name ?? "Candidate"}</td>
+                      <td className="small jp-muted">{a.job_seekers?.profiles?.email}</td>
                       <td className="small jp-muted">{a.jobs?.title}</td>
                       <td className="small jp-muted">{formatDate(a.applied_at)}</td>
                       <td><span className={statusClass(a.status)}>{a.status}</span></td>

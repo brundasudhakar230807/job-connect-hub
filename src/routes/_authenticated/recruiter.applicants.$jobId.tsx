@@ -29,7 +29,7 @@ function JobApplicants() {
         supabase.from("jobs").select("id, title, location, status, openings").eq("id", jobId).maybeSingle(),
         supabase
           .from("applications")
-          .select("id, status, applied_at, profiles:job_seeker_id(full_name, email, phone), job_seekers:job_seeker_id(headline, experience_years, location)")
+          .select("id, status, applied_at, job_seekers:job_seeker_id(headline, experience_years, location, profiles(full_name, email))")
           .eq("job_id", jobId)
           .order("applied_at", { ascending: false }),
       ]);
@@ -68,8 +68,8 @@ function JobApplicants() {
                       {apps.map((a) => (
                         <tr key={a.id}>
                           <td>
-                            <div className="fw-semibold">{a.profiles?.full_name ?? "Candidate"}</div>
-                            <div className="small jp-muted">{a.profiles?.email}</div>
+                            <div className="fw-semibold">{a.job_seekers?.profiles?.full_name ?? "Candidate"}</div>
+                            <div className="small jp-muted">{a.job_seekers?.profiles?.email}</div>
                           </td>
                           <td className="small jp-muted">{a.job_seekers?.headline ?? "—"}</td>
                           <td className="small jp-muted">{a.job_seekers?.experience_years ?? 0} yrs</td>

@@ -43,7 +43,7 @@ function RecruiterDashboard() {
       const { data: applications } = jobIds.length
         ? await supabase
             .from("applications")
-            .select("id, status, applied_at, job_id, jobs(title), profiles:job_seeker_id(full_name)")
+            .select("id, status, applied_at, job_id, jobs(title), job_seekers:job_seeker_id(profiles(full_name))")
             .in("job_id", jobIds)
             .order("applied_at", { ascending: false })
         : { data: [] };
@@ -96,7 +96,7 @@ function RecruiterDashboard() {
                     <tbody>
                       {apps.slice(0, 6).map((a) => (
                         <tr key={a.id}>
-                          <td className="fw-semibold">{a.profiles?.full_name ?? "Candidate"}</td>
+                          <td className="fw-semibold">{a.job_seekers?.profiles?.full_name ?? "Candidate"}</td>
                           <td className="jp-muted">{a.jobs?.title}</td>
                           <td className="jp-muted small">{formatDate(a.applied_at)}</td>
                           <td><span className={statusClass(a.status)}>{a.status}</span></td>
