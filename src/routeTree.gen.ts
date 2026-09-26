@@ -19,6 +19,7 @@ import { Route as AuthenticatedDashboardRouteImport } from './routes/_authentica
 import { Route as AuthenticatedResumeRouteImport } from './routes/_authenticated/resume'
 import { Route as JobsIndexRouteImport } from './routes/jobs.index'
 import { Route as JobsJobIdRouteImport } from './routes/jobs.$jobId'
+import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
 import { Route as AuthenticatedApplicationsIndexRouteImport } from './routes/_authenticated/applications.index'
 import { Route as AuthenticatedApplicationsApplicationIdRouteImport } from './routes/_authenticated/applications.$applicationId'
 import { Route as AuthenticatedProfileIndexRouteImport } from './routes/_authenticated/profile.index'
@@ -79,6 +80,11 @@ const JobsJobIdRoute = JobsJobIdRouteImport.update({
   id: '/jobs/$jobId',
   path: '/jobs/$jobId',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
+  id: '/admin/',
+  path: '/admin/',
+  getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
 const AuthenticatedApplicationsIndexRoute =
   AuthenticatedApplicationsIndexRouteImport.update({
@@ -163,6 +169,7 @@ export interface FileRoutesByFullPath {
   '/recruiter/dashboard': typeof AuthenticatedRecruiterDashboardRoute
   '/recruiter/jobs': typeof AuthenticatedRecruiterJobsRoute
   '/recruiter/post-job': typeof AuthenticatedRecruiterPostJobRoute
+  '/admin/': typeof AuthenticatedAdminIndexRoute
   '/applications/': typeof AuthenticatedApplicationsIndexRoute
   '/profile/': typeof AuthenticatedProfileIndexRoute
   '/recruiter/applicants/$jobId': typeof AuthenticatedRecruiterApplicantsJobIdRoute
@@ -185,6 +192,7 @@ export interface FileRoutesByTo {
   '/recruiter/dashboard': typeof AuthenticatedRecruiterDashboardRoute
   '/recruiter/jobs': typeof AuthenticatedRecruiterJobsRoute
   '/recruiter/post-job': typeof AuthenticatedRecruiterPostJobRoute
+  '/admin': typeof AuthenticatedAdminIndexRoute
   '/applications': typeof AuthenticatedApplicationsIndexRoute
   '/profile': typeof AuthenticatedProfileIndexRoute
   '/recruiter/applicants/$jobId': typeof AuthenticatedRecruiterApplicantsJobIdRoute
@@ -209,6 +217,7 @@ export interface FileRoutesById {
   '/_authenticated/recruiter/dashboard': typeof AuthenticatedRecruiterDashboardRoute
   '/_authenticated/recruiter/jobs': typeof AuthenticatedRecruiterJobsRoute
   '/_authenticated/recruiter/post-job': typeof AuthenticatedRecruiterPostJobRoute
+  '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
   '/_authenticated/applications/': typeof AuthenticatedApplicationsIndexRoute
   '/_authenticated/profile/': typeof AuthenticatedProfileIndexRoute
   '/_authenticated/recruiter/applicants/$jobId': typeof AuthenticatedRecruiterApplicantsJobIdRoute
@@ -233,6 +242,7 @@ export interface FileRouteTypes {
     | '/recruiter/dashboard'
     | '/recruiter/jobs'
     | '/recruiter/post-job'
+    | '/admin/'
     | '/applications/'
     | '/profile/'
     | '/recruiter/applicants/$jobId'
@@ -255,6 +265,7 @@ export interface FileRouteTypes {
     | '/recruiter/dashboard'
     | '/recruiter/jobs'
     | '/recruiter/post-job'
+    | '/admin'
     | '/applications'
     | '/profile'
     | '/recruiter/applicants/$jobId'
@@ -278,6 +289,7 @@ export interface FileRouteTypes {
     | '/_authenticated/recruiter/dashboard'
     | '/_authenticated/recruiter/jobs'
     | '/_authenticated/recruiter/post-job'
+    | '/_authenticated/admin/'
     | '/_authenticated/applications/'
     | '/_authenticated/profile/'
     | '/_authenticated/recruiter/applicants/$jobId'
@@ -368,6 +380,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof JobsJobIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/admin/': {
+      id: '/_authenticated/admin/'
+      path: '/admin'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/applications/': {
       id: '/_authenticated/applications/'
       path: '/applications'
@@ -457,6 +476,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedRecruiterDashboardRoute: typeof AuthenticatedRecruiterDashboardRoute
   AuthenticatedRecruiterJobsRoute: typeof AuthenticatedRecruiterJobsRoute
   AuthenticatedRecruiterPostJobRoute: typeof AuthenticatedRecruiterPostJobRoute
+  AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
   AuthenticatedApplicationsIndexRoute: typeof AuthenticatedApplicationsIndexRoute
   AuthenticatedProfileIndexRoute: typeof AuthenticatedProfileIndexRoute
   AuthenticatedRecruiterApplicantsJobIdRoute: typeof AuthenticatedRecruiterApplicantsJobIdRoute
@@ -474,6 +494,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedRecruiterDashboardRoute: AuthenticatedRecruiterDashboardRoute,
   AuthenticatedRecruiterJobsRoute: AuthenticatedRecruiterJobsRoute,
   AuthenticatedRecruiterPostJobRoute: AuthenticatedRecruiterPostJobRoute,
+  AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
   AuthenticatedApplicationsIndexRoute: AuthenticatedApplicationsIndexRoute,
   AuthenticatedProfileIndexRoute: AuthenticatedProfileIndexRoute,
   AuthenticatedRecruiterApplicantsJobIdRoute:
