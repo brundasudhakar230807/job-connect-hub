@@ -80,20 +80,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lovable App" },
-      { name: "description", content: "Lovable Generated Project" },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lovable App" },
-      { property: "og:description", content: "Lovable Generated Project" },
+      { title: "JobPortal — Job Portal & Recruitment System" },
+      {
+        name: "description",
+        content: "Search jobs, apply online and hire talent on JobPortal, a full-stack recruitment system.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:site", content: "@Lovable" },
     ],
     links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
+      { rel: "stylesheet", href: bootstrapCss },
+      { rel: "stylesheet", href: appCss },
+      { rel: "stylesheet", href: portalCss },
       { rel: "icon", href: "/favicon.ico", type: "image/x-icon" },
     ],
   }),
