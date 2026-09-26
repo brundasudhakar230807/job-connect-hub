@@ -1,0 +1,335 @@
+/* ===========================================================
+   Job Portal design system (layered on top of Bootstrap 5)
+   =========================================================== */
+
+:root {
+  --jp-navy: #0f2540;
+  --jp-navy-700: #163356;
+  --jp-navy-050: #eef3f9;
+  --jp-accent: #ff6b35;
+  --jp-accent-600: #e85a25;
+  --jp-teal: #0ea5a5;
+  --jp-ink: #16202c;
+  --jp-muted: #647287;
+  --jp-line: #e3e9f2;
+  --jp-bg: #f6f8fc;
+  --jp-radius: 14px;
+  --jp-shadow: 0 10px 30px -18px rgba(15, 37, 64, 0.45);
+  --jp-shadow-lg: 0 24px 48px -28px rgba(15, 37, 64, 0.55);
+
+  --bs-primary: #0f2540;
+  --bs-primary-rgb: 15, 37, 64;
+  --bs-body-color: #16202c;
+  --bs-body-bg: #f6f8fc;
+  --bs-border-color: #e3e9f2;
+  --bs-link-color: #0f2540;
+  --bs-link-hover-color: #ff6b35;
+  --bs-border-radius: 12px;
+}
+
+body {
+  font-family:
+    "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  background: var(--jp-bg);
+  color: var(--jp-ink);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.jp-display {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--jp-navy);
+}
+
+/* ---------- buttons ---------- */
+.btn {
+  border-radius: 10px;
+  font-weight: 600;
+}
+.btn-primary {
+  background: var(--jp-navy);
+  border-color: var(--jp-navy);
+}
+.btn-primary:hover,
+.btn-primary:focus {
+  background: var(--jp-navy-700);
+  border-color: var(--jp-navy-700);
+}
+.btn-accent {
+  background: var(--jp-accent);
+  border-color: var(--jp-accent);
+  color: #fff;
+}
+.btn-accent:hover,
+.btn-accent:focus {
+  background: var(--jp-accent-600);
+  border-color: var(--jp-accent-600);
+  color: #fff;
+}
+.btn-outline-navy {
+  color: var(--jp-navy);
+  border-color: var(--jp-navy);
+}
+.btn-outline-navy:hover {
+  background: var(--jp-navy);
+  color: #fff;
+}
+
+/* ---------- navbar ---------- */
+.jp-navbar {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--jp-line);
+}
+.jp-brand {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--jp-navy) !important;
+  font-size: 1.25rem;
+}
+.jp-brand-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--jp-navy), var(--jp-teal));
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 800;
+  margin-right: 0.55rem;
+}
+.jp-navbar .nav-link {
+  font-weight: 600;
+  color: var(--jp-muted);
+  padding: 0.5rem 0.85rem;
+  border-radius: 8px;
+}
+.jp-navbar .nav-link:hover,
+.jp-navbar .nav-link.active {
+  color: var(--jp-navy);
+  background: var(--jp-navy-050);
+}
+
+/* ---------- hero ---------- */
+.jp-hero {
+  background:
+    radial-gradient(900px 420px at 85% -10%, rgba(14, 165, 165, 0.35), transparent 60%),
+    radial-gradient(700px 360px at 5% 110%, rgba(255, 107, 53, 0.28), transparent 60%),
+    linear-gradient(140deg, #0f2540 0%, #16324f 60%, #123146 100%);
+  color: #fff;
+  border-radius: 0 0 28px 28px;
+}
+.jp-hero h1,
+.jp-hero h2 {
+  color: #fff;
+}
+.jp-hero .lead {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* ---------- cards ---------- */
+.jp-card {
+  background: #fff;
+  border: 1px solid var(--jp-line);
+  border-radius: var(--jp-radius);
+  box-shadow: var(--jp-shadow);
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+.jp-card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--jp-shadow-lg);
+  border-color: rgba(15, 37, 64, 0.22);
+}
+.jp-stat {
+  border-radius: var(--jp-radius);
+  border: 1px solid var(--jp-line);
+  background: #fff;
+  box-shadow: var(--jp-shadow);
+}
+.jp-stat .jp-stat-value {
+  font-size: 1.9rem;
+  font-weight: 800;
+  color: var(--jp-navy);
+  line-height: 1;
+}
+.jp-logo-square {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  font-weight: 800;
+  color: #fff;
+  background: linear-gradient(135deg, var(--jp-navy), var(--jp-teal));
+  flex: 0 0 auto;
+}
+
+/* ---------- chips / badges ---------- */
+.jp-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.25rem 0.65rem;
+  border-radius: 999px;
+  background: var(--jp-navy-050);
+  color: var(--jp-navy);
+  font-size: 0.78rem;
+  font-weight: 600;
+  border: 1px solid rgba(15, 37, 64, 0.08);
+}
+.jp-status {
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  padding: 0.35rem 0.7rem;
+}
+.jp-status-applied {
+  background: #e7edf6;
+  color: #23415f;
+}
+.jp-status-review {
+  background: #fff3d6;
+  color: #8a5b00;
+}
+.jp-status-shortlisted {
+  background: #e0f2fe;
+  color: #075985;
+}
+.jp-status-interview {
+  background: #ede9fe;
+  color: #5b21b6;
+}
+.jp-status-selected {
+  background: #dcfce7;
+  color: #14622f;
+}
+.jp-status-rejected {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* ---------- forms ---------- */
+.form-control,
+.form-select {
+  border-radius: 10px;
+  border-color: var(--jp-line);
+  padding: 0.6rem 0.85rem;
+}
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--jp-navy);
+  box-shadow: 0 0 0 0.2rem rgba(15, 37, 64, 0.12);
+}
+.form-label {
+  font-weight: 600;
+  font-size: 0.88rem;
+  color: var(--jp-navy);
+}
+
+/* ---------- tables ---------- */
+.jp-table {
+  --bs-table-bg: #fff;
+  border-radius: var(--jp-radius);
+  overflow: hidden;
+}
+.jp-table thead th {
+  background: var(--jp-navy-050);
+  color: var(--jp-navy);
+  font-size: 0.78rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid var(--jp-line);
+  white-space: nowrap;
+}
+.jp-table td {
+  vertical-align: middle;
+}
+
+/* ---------- sidebar ---------- */
+.jp-sidebar .list-group-item {
+  border: 0;
+  border-radius: 10px;
+  font-weight: 600;
+  color: var(--jp-muted);
+  padding: 0.6rem 0.85rem;
+  background: transparent;
+}
+.jp-sidebar .list-group-item.active {
+  background: var(--jp-navy);
+  color: #fff;
+}
+.jp-sidebar .list-group-item:hover:not(.active) {
+  background: var(--jp-navy-050);
+  color: var(--jp-navy);
+}
+
+/* ---------- misc ---------- */
+.jp-muted {
+  color: var(--jp-muted);
+}
+.jp-footer {
+  background: var(--jp-navy);
+  color: rgba(255, 255, 255, 0.75);
+}
+.jp-footer a {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+}
+.jp-footer a:hover {
+  color: #fff;
+}
+.jp-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 37, 64, 0.5);
+  z-index: 1050;
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+  overflow-y: auto;
+}
+.jp-skeleton {
+  background: linear-gradient(90deg, #eef2f7 25%, #f7fafc 50%, #eef2f7 75%);
+  background-size: 200% 100%;
+  animation: jp-shimmer 1.2s infinite;
+  border-radius: 8px;
+}
+@keyframes jp-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+.jp-timeline {
+  list-style: none;
+  padding-left: 1.2rem;
+  border-left: 2px solid var(--jp-line);
+  margin: 0;
+}
+.jp-timeline li {
+  position: relative;
+  padding-bottom: 1rem;
+}
+.jp-timeline li::before {
+  content: "";
+  position: absolute;
+  left: -1.63rem;
+  top: 0.35rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--jp-line);
+}
+.jp-timeline li.done::before {
+  background: var(--jp-accent);
+}
